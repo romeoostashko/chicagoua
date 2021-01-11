@@ -1,0 +1,107 @@
+.Navbar {
+  background-color: #fdfdfd;
+  border: 1px medium rgb(214, 214, 214);
+  box-shadow: inset 0px -5px 15px -8px rgba(196, 196, 196, 0.64);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 15vh;
+  font-family: "Roboto", sans-serif;
+}
+
+.Navbar ul {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.Navbar li {
+  color: #2e2e2e;
+  list-style: none;
+  letter-spacing: 1px;
+}
+
+.Navbar a:hover {
+  color: #161616;
+  font-weight: bolder;
+  border: 5px medium rgb(160, 160, 160);
+  box-shadow: 0 2px 8px rgb(209, 209, 209);
+  background-color: white;
+}
+
+.Navbar a {
+  letter-spacing: 1px;
+  color: #2e2e2e;
+  text-decoration: none;
+  letter-spacing: 1px;
+  padding: 8px;
+  text-transform: uppercase;
+}
+
+.Logo a {
+  color: #333231;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 30px;
+}
+
+.NavBurger {
+  display: none;
+  cursor: pointer;
+}
+.NavBurger div {
+  background-color: #3d6a66;
+  width: 23px;
+  height: 3px;
+  margin: 5px;
+}
+
+@media screen and (max-width: 1050px) {
+  .Navbar ul {
+    width: 54%;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  body {
+    overflow-x: hidden;
+  }
+  .Navlink {
+    background-color: #ffffff;
+    box-shadow: -2px 6px 5px 2px #ccc;
+    position: absolute;
+    right: 0;
+    height: 85vh;
+    top: 15vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in;
+  }
+
+  .Navbar ul {
+    width: 36%;
+  }
+  .NavBurger {
+    display: block;
+  }
+}
+
+.NavActive {
+  transform: translateX(0%);
+}
+
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}

@@ -1,0 +1,16 @@
+.TextCard textarea {
+  width: 300px;
+  height: 150px;
+  font-size: 14px;
+  margin: 0 auto;
+}
+
+.TextCard textarea:focus {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+}
+.TextCard form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

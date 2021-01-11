@@ -1,0 +1,9 @@
+.OneCategorie {
+  margin-bottom: 200px;
+}
+
+.ChosenCategorie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

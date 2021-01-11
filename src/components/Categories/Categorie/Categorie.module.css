@@ -1,0 +1,33 @@
+.Categorie {
+  color: #3d6a66;
+  background-color: #ffffff;
+  box-shadow: 0 0px 0px #f6f4f5;
+  width: 200px;
+  display: flex;
+
+  justify-content: space-around;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 500;
+  height: 30px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.Categorie:hover {
+  border: 5px medium rgb(160, 160, 160);
+  background: #f8f8f8;
+  box-shadow: 0px 9px 10px -4px #ccc;
+  color: #000;
+  font-weight: bold;
+  text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3), 0px 0px 0px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 820px) {
+  .Categorie {
+    width: 50%;
+    height: 45px;
+    margin: 5px;
+  }
+}

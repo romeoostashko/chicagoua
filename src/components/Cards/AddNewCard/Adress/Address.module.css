@@ -1,0 +1,23 @@
+.Address input {
+  display: block;
+  width: 250px;
+  height: 30px;
+  font-size: 14px;
+  margin: 10px auto;
+}
+
+.Address input:focus {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+}
+.Address form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.AddressForm div :valid {
+  background: url("../../../../images/check.svg");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 225px 5px;
+}

@@ -1,0 +1,16 @@
+.TitleCard input {
+  width: 250px;
+  height: 30px;
+  font-size: 14px;
+  margin: 0 auto;
+}
+
+.TitleCard input:focus {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+}
+.TitleCard form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
