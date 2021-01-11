@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import classes from "./Address.module.css";
 import Button from "../../../Button/Button";
 import AddNewCardContext from "../../../Context/AddNewCardContext";
-
 const Address = (props) => {
   let addNewCardContext = useContext(AddNewCardContext);
 
