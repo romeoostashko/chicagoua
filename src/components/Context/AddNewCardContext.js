@@ -25,7 +25,7 @@ const TitleCardContext = React.createContext({
     title2: "2. Enter an ad title",
     title3: "3. Enter your ad text",
     title4: "4. Enter your personal information",
-    title5: "5. Виберіть штат із списку",
+    title5: "5. Select a state from the list",
   },
 
   langues: "ua",

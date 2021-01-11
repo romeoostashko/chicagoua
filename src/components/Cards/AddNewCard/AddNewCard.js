@@ -9,10 +9,12 @@ import TitleCard from "./TitleCard/TitleCard";
 import TextCard from "./TextCard/TextCard";
 import Address from "./Adress/Address";
 import ChosenStateUS from "../../Cards/AddNewCard/ChosenState/ChosenState";
+import FinishAddNewCard from "./FinishAddNewCard/FinishAddNewCard";
 
 class AddNewCard extends Component {
   state = {
     typ: "",
+    status: "",
     title: "",
     body: "",
     yourname: "",
@@ -22,46 +24,44 @@ class AddNewCard extends Component {
     email: "",
     tel: "",
   };
-
+  //------------------------
   static contextType = CardsContext;
-
+  //----------------------------------------
   inputChangetHandler = (e, id) => {
     this.setState({ [id]: e.target.value });
-    console.log(this.state);
-    console.log(e);
   };
-
-  /* submitHandler = (e) => {
+  //----------------------------------------------
+  submitHandler = (e, path) => {
     e.preventDefault();
-    console.log("hi");
     const formData = {};
-    for (let key in this.state.orderForm) {
-      formData[key] = this.state.orderForm[key].value;
+    for (let key in this.state) {
+      formData[key] = this.state[key];
     }
     axios.post("/cards.json", formData).then((response) => {
-      console.log(response);
+      console.log(response.data);
+      this.props.history.push(path);
     });
-  };*/
-
+  };
+  //-------------------------------------------------
   chosenCategorieHandler = (e, path) => {
     this.setState({ typ: e.target.innerText });
     this.props.history.push(path);
   };
-
+  //-------------------------------------------------
   chosenStateHandler = (e, path) => {
     this.setState({ typ: e.target.value });
     //this.props.history.push(path);
   };
-
-  nextButtonHandler = (e, path) => {
+  //-------------------------------------------------
+  nextButtonHandler = (e, path, typState) => {
     e.preventDefault();
-    if (this.state.title === "") {
+    if (this.state[typState] === "") {
       return;
     } else {
       this.props.history.push(path);
     }
   };
-
+  //-------------------------------------------------
   render() {
     return (
       <div className={classes.AddNewCard}>
@@ -76,7 +76,11 @@ class AddNewCard extends Component {
         <Route path="/cards/add-new-card/title" exact>
           <TitleCard
             clicked={(e) => {
-              this.nextButtonHandler(e, "/cards/add-new-card/text-card");
+              this.nextButtonHandler(
+                e,
+                "/cards/add-new-card/text-card",
+                "title"
+              );
             }}
             onChange={(e) => {
               this.inputChangetHandler(e, "title");
@@ -89,14 +93,22 @@ class AddNewCard extends Component {
               this.inputChangetHandler(e, "body");
             }}
             clicked={(e) => {
-              this.nextButtonHandler(e, "/cards/add-new-card/your-address");
+              this.nextButtonHandler(
+                e,
+                "/cards/add-new-card/your-address",
+                "body"
+              );
             }}
           />
         </Route>
         <Route path="/cards/add-new-card/your-address" exact>
           <Address
             clicked={(e) => {
-              this.nextButtonHandler(e, "/cards/add-new-card/your-state");
+              this.nextButtonHandler(
+                e,
+                "/cards/add-new-card/your-state",
+                e.target.name
+              );
             }}
             onChange={(e) => {
               this.inputChangetHandler(e, e.target.name);
@@ -105,9 +117,27 @@ class AddNewCard extends Component {
         </Route>
         <Route path="/cards/add-new-card/your-state" exact>
           <ChosenStateUS
-            clicked={(e) => {
-              this.chosenStateHandler(e, "/cards/add-new-card/title");
+            clickedState={(e) => {
+              this.inputChangetHandler(e, "state");
             }}
+            clicked={(e) => {
+              this.nextButtonHandler(e, "/cards/add-new-card/finish", "state");
+            }}
+          />
+        </Route>
+        <Route path="/cards/add-new-card/finish" exact>
+          <FinishAddNewCard
+            clicked={(e) => {
+              this.submitHandler(e, "/");
+            }}
+            title={this.state.title}
+            body={this.state.body}
+            typ={this.state.typ}
+            yourname={this.state.yourname}
+            city={this.state.city}
+            state={this.state.state}
+            email={this.state.email}
+            tel={this.state.tel}
           />
         </Route>
       </div>

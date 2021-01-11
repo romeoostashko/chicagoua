@@ -2,21 +2,25 @@ import React, { useContext } from "react";
 import classes from "./ChosenState.module.css";
 import StateUSContext from "../../../Context/StateUSContext";
 import Button from "../../../Button/Button";
+import AddNewCardContext from "../../../Context/AddNewCardContext";
 
 const ChosenStateUS = (props) => {
+  let addNewCardContext = useContext(AddNewCardContext);
   let stateUS = useContext(StateUSContext);
   if (stateUS.langues === "usa") {
     stateUS = stateUS.ua;
+    addNewCardContext = addNewCardContext.ua;
   } else {
     stateUS = stateUS.usa;
+    addNewCardContext = addNewCardContext.usa;
   }
 
   return (
     <div className={classes.ChosenStateUS}>
-      <h3>5. Виберіть штат із списку</h3>
-      <select onChange={props.clicked} name="states">
+      <h3>{addNewCardContext.title5}</h3>
+      <select onChange={props.clickedState} name="states">
         <option disabled defaultValue className={classes.Placeholder}>
-          Виберіть штат
+          {addNewCardContext.placeholder5ListStates}
         </option>
         {stateUS.map((iteam) => (
           <option key={iteam.name} value={iteam.name}>
@@ -24,7 +28,7 @@ const ChosenStateUS = (props) => {
           </option>
         ))}
       </select>
-      <Button clicked={props.clicked} textBtn="Надіслати оголошення" />
+      <Button clicked={props.clicked} textBtn={addNewCardContext.textBtnNext} />
     </div>
   );
 };

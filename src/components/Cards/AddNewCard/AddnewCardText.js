@@ -11,6 +11,10 @@ const addNewCardText = {
     title3: "3. Введіть текст оголошення",
     title4: "4. Введіть ваші персональні дані",
     title5: "5. Виберіть штат із списку",
+    placeholder5ListStates: "Виберіть штат",
+    finishH2: "Ваше оголошення",
+    finishTyp: "Категорія оголошення",
+    finishState: "Ваш штат",
   },
   usa: {
     placeholderWriteHere: "Write here...",
@@ -23,7 +27,11 @@ const addNewCardText = {
     title2: "2. Enter an ad title",
     title3: "3. Enter your ad text",
     title4: "4. Enter your personal information",
-    title5: "5. Виберіть штат із списку",
+    title5: "5. Select a state from the list",
+    placeholder5ListStates: "Select a state",
+    finishH2: "Your ad",
+    finishTyp: "Ad category",
+    finishState: "Your state",
   },
 
   langues: "ua",
