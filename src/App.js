@@ -10,6 +10,7 @@ import statesUSA from "./components/Cards/AddNewCard/statesUSA";
 import StateUSContext from "./components/Context/StateUSContext";
 import AddNewCardContext from "./components/Context/AddNewCardContext.js";
 import addNewCardText from "./components/Cards/AddNewCard/AddnewCardText";
+import categoriesText from "./components/Context/Text/CategoriesText";
 
 function App() {
   const [lange, setstate] = useState("usa");
@@ -26,30 +27,7 @@ function App() {
   //---------------------------------
   addNewCardText.langues = lange;
   //---------------------------------
-  const Categories = {
-    ua: {
-      arr: [
-        { value: "job", valueDisplay: "Робота" },
-        { value: "apartment", valueDisplay: "Житло" },
-        { value: "outfit", valueDisplay: "Інструмент" },
-        { value: "auto", valueDisplay: "Авто" },
-        { value: "buySell", valueDisplay: "Куплю / Продам" },
-      ],
-      titleChosenCategorie: "1. Виберіть категорію оголошення",
-    },
-    usa: {
-      arr: [
-        { value: "job", valueDisplay: "job" },
-        { value: "apartment", valueDisplay: "apartment" },
-        { value: "outfit", valueDisplay: "outfit" },
-        { value: "auto", valueDisplay: "auto" },
-        { value: "buySell", valueDisplay: "buy / sell" },
-      ],
-      titleChosenCategorie: "1. Choose your ad category",
-    },
-    langues: lange,
-    titleChosenCategorie: "",
-  };
+  categoriesText.langues = lange;
   //---------------------------------------------------
   const NavBarText = {
     ua: {
@@ -96,7 +74,7 @@ function App() {
 
         {/* */}
 
-        <CategoriesContext.Provider value={Categories}>
+        <CategoriesContext.Provider value={categoriesText}>
           <CardsContext.Provider value={textCardsContext}>
             <StateUSContext.Provider value={statesUSA}>
               <AddNewCardContext.Provider value={addNewCardText}>

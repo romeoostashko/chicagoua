@@ -12,9 +12,11 @@ const ChosenCategorie = (props) => {
     categoriesContext = categoriesContext.usa;
   }
 
-  const arr = categoriesContext.arr.map((iteam) => (
+  const arr = categoriesContext.arr.map((iteam, idx) => (
     <Categorie
-      clicked={props.clicked}
+      clicked={(e, path, value, id) => {
+        props.clicked(e, path, iteam.value, idx);
+      }}
       link="#"
       key={iteam.value}
       nameCategorie={iteam.valueDisplay}

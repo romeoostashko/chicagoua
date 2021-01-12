@@ -10,11 +10,14 @@ import TextCard from "./TextCard/TextCard";
 import Address from "./Adress/Address";
 import ChosenStateUS from "../../Cards/AddNewCard/ChosenState/ChosenState";
 import FinishAddNewCard from "./FinishAddNewCard/FinishAddNewCard";
+import ChoisenSubCategorie from "./ChoisenSubCategorie/ChoisenSubCategorie";
 
 class AddNewCard extends Component {
   state = {
     typ: "",
-    status: "",
+    label: "",
+    value: "",
+    idx: "",
     title: "",
     body: "",
     yourname: "",
@@ -43,10 +46,19 @@ class AddNewCard extends Component {
     });
   };
   //-------------------------------------------------
-  chosenCategorieHandler = (e, path) => {
+  chosenCategorieHandler = (e, path, value, idx) => {
     this.setState({ typ: e.target.innerText });
+    if (path === "/cards/add-new-card/sub-categorie") {
+      this.setState({ value, idx });
+    }
     this.props.history.push(path);
   };
+  //----------
+  chosenSubCategorieHandler = (e, path, label) => {
+    this.setState({ label });
+    this.props.history.push(path);
+  };
+
   //-------------------------------------------------
   chosenStateHandler = (e, path) => {
     this.setState({ typ: e.target.value });
@@ -67,8 +79,25 @@ class AddNewCard extends Component {
       <div className={classes.AddNewCard}>
         <Route path="/cards/add-new-card" exact>
           <ChosenCategorie
-            clicked={(e) => {
-              this.chosenCategorieHandler(e, "/cards/add-new-card/title");
+            clicked={(e, path, value, idx) => {
+              this.chosenCategorieHandler(
+                e,
+                "/cards/add-new-card/sub-categorie",
+                value,
+                idx
+              );
+            }}
+          />
+        </Route>
+        <Route path="/cards/add-new-card/sub-categorie" exact>
+          <ChoisenSubCategorie
+            idx={this.state.idx}
+            clicked={(e, path, label) => {
+              this.chosenSubCategorieHandler(
+                e,
+                "/cards/add-new-card/title",
+                label
+              );
             }}
           />
         </Route>

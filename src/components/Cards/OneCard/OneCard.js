@@ -5,7 +5,7 @@ const OneCard = (props) => {
   return (
     <div className={classes.OneCard}>
       <h3>Шукаю штукатура</h3>
-      <h4>Чікаго</h4>
+      <h5>Чікаго</h5>
       <div className={classes.Line}></div>
       <p>
         {props.textBodyOneCard}
