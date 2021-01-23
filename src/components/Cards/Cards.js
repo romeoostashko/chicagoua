@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Link, Route } from "react-router-dom";
+import { connect } from "react-redux";
 import axios from "../../axios-order";
 import classes from "./Cards.module.css";
 import OneCard from "./OneCard/OneCard";
@@ -54,4 +55,10 @@ const Cards = (props) => {
   );
 };
 
-export default Cards;
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  CardsToState: () => dispatch({ type: "CARDSTOSTATE" }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cards);
