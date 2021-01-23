@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/chicagoua/static/css/main.e1ae5079.chunk.css",
-    "main.js": "/chicagoua/static/js/main.43f01aa2.chunk.js",
-    "main.js.map": "/chicagoua/static/js/main.43f01aa2.chunk.js.map",
+    "main.js": "/chicagoua/static/js/main.f12f2aab.chunk.js",
+    "main.js.map": "/chicagoua/static/js/main.f12f2aab.chunk.js.map",
     "runtime-main.js": "/chicagoua/static/js/runtime-main.68e5edb9.js",
     "runtime-main.js.map": "/chicagoua/static/js/runtime-main.68e5edb9.js.map",
     "static/js/2.88cb6140.chunk.js": "/chicagoua/static/js/2.88cb6140.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.68e5edb9.js",
     "static/js/2.88cb6140.chunk.js",
     "static/css/main.e1ae5079.chunk.css",
-    "static/js/main.43f01aa2.chunk.js"
+    "static/js/main.f12f2aab.chunk.js"
   ]
 }
