@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
+import { connect } from "react-redux";
+import * as typActions from "../../store/actions";
 import classes from "./AddNewCard.module.css";
 import axios from "../../../axios-order";
 import Button from "../../Button/Button";
@@ -18,14 +20,7 @@ class AddNewCard extends Component {
     label: "",
     value: "",
     idx: "",
-    title: "",
-    body: "",
-    yourname: "",
-    state: "",
-    city: "",
     zip: "",
-    email: "",
-    tel: "",
   };
   //------------------------
   static contextType = CardsContext;
@@ -67,7 +62,7 @@ class AddNewCard extends Component {
   //-------------------------------------------------
   nextButtonHandler = (e, path, typState) => {
     e.preventDefault();
-    if (this.state[typState] === "") {
+    if (!this.props[typState] || this.props[typState].trim() === "") {
       return;
     } else {
       this.props.history.push(path);
@@ -111,16 +106,10 @@ class AddNewCard extends Component {
                 "title"
               );
             }}
-            onChange={(e) => {
-              this.inputChangetHandler(e, "title");
-            }}
           />
         </Route>
         <Route path="/cards/add-new-card/text-card" exact>
           <TextCard
-            onChange={(e) => {
-              this.inputChangetHandler(e, "body");
-            }}
             clicked={(e) => {
               this.nextButtonHandler(
                 e,
@@ -136,7 +125,7 @@ class AddNewCard extends Component {
               this.nextButtonHandler(
                 e,
                 "/cards/add-new-card/your-state",
-                e.target.name
+                "yourname"
               );
             }}
             onChange={(e) => {
@@ -159,14 +148,7 @@ class AddNewCard extends Component {
             clicked={(e) => {
               this.submitHandler(e, "/");
             }}
-            title={this.state.title}
-            body={this.state.body}
             typ={this.state.typ}
-            yourname={this.state.yourname}
-            city={this.state.city}
-            state={this.state.state}
-            email={this.state.email}
-            tel={this.state.tel}
           />
         </Route>
       </div>
@@ -174,4 +156,20 @@ class AddNewCard extends Component {
   }
 }
 
-export default AddNewCard;
+const mapStateToProps = (state) => {
+  return {
+    title: state.addNewCards.title,
+    body: state.addNewCards.body,
+    yourname: state.addNewCards.yourname,
+    city: state.addNewCards.city,
+    email: state.addNewCards.email,
+    tel: state.addNewCards.tel,
+    state: state.addNewCards.state,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddNewCard);

@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { connect } from "react-redux";
+import * as typActions from "../../../store/actions";
 import classes from "./FinishAddNewCard.module.css";
 import Button from "../../../Button/Button";
 import AddNewCardContext from "../../../Context/AddNewCardContext";
@@ -39,4 +41,20 @@ const FinishAddNewCard = (props) => {
   );
 };
 
-export default FinishAddNewCard;
+const mapStateToProps = (state) => {
+  return {
+    title: state.addNewCards.title,
+    body: state.addNewCards.body,
+    yourname: state.addNewCards.yourname,
+    city: state.addNewCards.city,
+    email: state.addNewCards.email,
+    tel: state.addNewCards.tel,
+    state: state.addNewCards.state,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FinishAddNewCard);

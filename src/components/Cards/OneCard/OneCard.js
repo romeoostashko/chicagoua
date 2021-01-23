@@ -20,15 +20,11 @@ const OneCard = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return {
-    cardsArr: state.cardsArr,
-  };
+  return {};
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    CardsToState: (arr) => dispatch({ type: typActions.CARDSTOSTATE, arr }),
-  };
+  return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(OneCard);

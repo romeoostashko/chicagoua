@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { connect } from "react-redux";
+import * as typActions from "../../../store/actions";
 import classes from "./Address.module.css";
 import Button from "../../../Button/Button";
 import AddNewCardContext from "../../../Context/AddNewCardContext";
@@ -17,28 +19,28 @@ const Address = (props) => {
         <div>
           <input
             autoComplete="no"
-            onChange={props.onChange}
+            onChange={(e) => props.readInput(e, e.target.name)}
             type="text"
             required
             name="yourname"
             placeholder={addNewCardContext.placeholderYourName}
           />
           <input
-            onChange={props.onChange}
+            onChange={(e) => props.readInput(e, e.target.name)}
             type="text"
             required
             name="city"
             placeholder={addNewCardContext.placeholderYourCity}
           />
           <input
-            onChange={props.onChange}
+            onChange={(e) => props.readInput(e, e.target.name)}
             type="text"
             required
             name="email"
             placeholder={addNewCardContext.placeholderEmail}
           />
           <input
-            onChange={props.onChange}
+            onChange={(e) => props.readInput(e, e.target.name)}
             type="text"
             required
             name="tel"
@@ -55,4 +57,14 @@ const Address = (props) => {
   );
 };
 
-export default Address;
+const mapStateToProps = (state) => {
+  return {};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    readInput: (e, id) => dispatch({ type: typActions.READ_INPUT, e, id }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Address);

@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { connect } from "react-redux";
+import * as typActions from "../../../store/actions";
 import classes from "./ChosenState.module.css";
 import StateUSContext from "../../../Context/StateUSContext";
 import Button from "../../../Button/Button";
@@ -18,7 +20,7 @@ const ChosenStateUS = (props) => {
   return (
     <div className={classes.ChosenStateUS}>
       <h3>{addNewCardContext.title5}</h3>
-      <select onChange={props.clickedState} name="states">
+      <select onChange={(e) => props.readInput(e, "state")} name="states">
         <option disabled defaultValue className={classes.Placeholder}>
           {addNewCardContext.placeholder5ListStates}
         </option>
@@ -33,4 +35,14 @@ const ChosenStateUS = (props) => {
   );
 };
 
-export default ChosenStateUS;
+const mapStateToProps = (state) => {
+  return {};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    readInput: (e, id) => dispatch({ type: typActions.READ_INPUT, e, id }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChosenStateUS);

@@ -60,13 +60,13 @@ const Cards = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    cardsArr: state.cardsArr,
+    cardsArr: state.cards.cardsArr,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    CardsToState: (arr) => dispatch({ type: typActions.CARDSTOSTATE, arr }),
+    CardsToState: (arr) => dispatch({ type: typActions.CARDS_TO_STATE, arr }),
   };
 };
 

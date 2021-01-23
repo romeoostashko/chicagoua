@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { connect } from "react-redux";
+import * as typActions from "../../../store/actions";
 import classes from "./TitleCard.module.css";
 import Button from "../../../Button/Button";
 import AddNewCardContext from "../../../Context/AddNewCardContext";
@@ -18,7 +20,7 @@ const TitleCard = (props) => {
       <form>
         <input
           autoComplete="no"
-          onChange={props.onChange}
+          onChange={(e) => props.readInput(e, "title")}
           type="text"
           required
           name="tytle"
@@ -33,4 +35,14 @@ const TitleCard = (props) => {
   );
 };
 
-export default TitleCard;
+const mapStateToProps = (state) => {
+  return {};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    readInput: (e, id) => dispatch({ type: typActions.READ_INPUT, e, id }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TitleCard);
