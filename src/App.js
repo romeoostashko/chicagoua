@@ -68,11 +68,12 @@ function App() {
     <div className="App">
       <BrowserRouter>
         {/*навігаційна панель */}
+
         <NavBarContext.Provider value={NavBarText}>
           <Navbar />
         </NavBarContext.Provider>
 
-        {/* */}
+        {/*Layout */}
 
         <CategoriesContext.Provider value={categoriesText}>
           <CardsContext.Provider value={textCardsContext}>

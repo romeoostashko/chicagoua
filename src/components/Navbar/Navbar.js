@@ -24,7 +24,7 @@ const Navbar = (props) => {
   return (
     <nav className={classes.Navbar}>
       <div className={classes.Logo}>
-        <Link to="/">{navBarContext.textLogo}</Link>
+        <Link to="/chicagoua/">{navBarContext.textLogo}</Link>
       </div>
 
       <ul ref={nav} className={classes.Navlink}>

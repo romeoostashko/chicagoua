@@ -9,11 +9,10 @@ class Layout extends Component {
   render() {
     return (
       <div className={classes.Layout}>
-        <Route path="/" exact component={Categories} />
+        <Route path="/" component={Categories} />
         <Switch>
           <Route
-            path="/"
-            exact
+            path="/chicagoua/"
             render={() => (
               <Cards
                 textBtnAddCard={this.props.textBtnAddCard}
