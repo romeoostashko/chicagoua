@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+import * as typActions from "../store/actions";
 import classes from "./Layout.module.css";
 import Categories from "../Categories/Categories";
 import Cards from "../Cards/Cards";

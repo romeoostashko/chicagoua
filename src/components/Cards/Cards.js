@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Link, Route } from "react-router-dom";
 import { connect } from "react-redux";
+import * as typActions from "../store/actions";
 import axios from "../../axios-order";
 import classes from "./Cards.module.css";
 import OneCard from "./OneCard/OneCard";
@@ -11,11 +12,12 @@ const Cards = (props) => {
   let arrCards = [];
   useEffect(() => {
     axios.get("/cards.json").then((response) => {
-      console.log(Object.values(response.data));
       arrCards = Object.values(response.data);
+      props.CardsToState(arrCards);
     });
   }, []);
-  //-------------------------------------------------
+
+  //----------------------------------------------
   let cardsContext = useContext(CardsContext);
   if (cardsContext.langues === "usa") {
     cardsContext = cardsContext.ua;
@@ -23,6 +25,7 @@ const Cards = (props) => {
     cardsContext = cardsContext.usa;
   }
   //----------------------------------------------
+
   return (
     <div className={classes.DisplayCards}>
       <Route
@@ -55,10 +58,16 @@ const Cards = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => {
+  return {
+    cardsArr: state.cardsArr,
+  };
+};
 
-const mapDispatchToProps = (dispatch) => ({
-  CardsToState: () => dispatch({ type: "CARDSTOSTATE" }),
-});
+const mapDispatchToProps = (dispatch) => {
+  return {
+    CardsToState: (arr) => dispatch({ type: typActions.CARDSTOSTATE, arr }),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cards);
